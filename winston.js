@@ -2,22 +2,37 @@ const winston = require('winston');
 require('winston-daily-rotate-file');
 var path = require ('path');
 var transports = [];
+// var mvisalogger = winston.createLogger({
+//     transports: [
+//     	new winston.transports.DailyRotateFile({
+//   		name: 'syndicate',
+//         datePattern: '.yyyy-MM-dd',
+//         format: winston.format.combine(
+//             winston.format.timestamp(),
+//             winston.format.json()
+//         ),
+//         levels: winston.config.npm.levels,
+// 		filename: path.join(__dirname, "logs", "server.log"),
+//         timestamp : function(){return  getCurrentDateTime() }
+//         }),
+         
+//     ]
+// });
 var mvisalogger = winston.createLogger({
     transports: [
     	new winston.transports.DailyRotateFile({
   		name: 'syndicate',
-        datePattern: '.yyyy-MM-dd',
+        datePattern: '.YYYY-MM-DD',
         format: winston.format.combine(
             winston.format.timestamp(),
             winston.format.json()
         ),
-        levels: winston.config.npm.levels,
 		filename: path.join(__dirname, "logs", "server.log"),
-        timestamp : function(){return  getCurrentDateTime() }
-        }),
-         
+		timestamp : function(){return getCurrentDateTime() }
+     	})
     ]
 });
+
 
 exports.logger = mvisalogger;
 
