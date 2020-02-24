@@ -18,7 +18,13 @@
     "bunyan": "^1.8.12",
     "bunyan-rotating-file-stream": "^1.6.3",
     "express": "^4.17.1",
+    "express-pino-logger": "^4.0.0",
+    "graceful-fs": "^4.2.3",
     "log4js": "^6.1.2",
+    "moment": "^2.24.0",
+    "pino": "^5.16.0",
+    "pino-multi-stream": "^4.3.0",
+    "pino-tee": "^0.3.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2"
   }

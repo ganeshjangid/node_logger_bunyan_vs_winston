@@ -25,12 +25,15 @@ var applogger = new bunyan.createLogger({
     streams: [{
         stream: new RotatingFileStream({
             type: 'rotating-file',
-            path: './logs/server-%Y%m%d.log',
-            period: '1d',          // daily rotation 
-            template: 'server-%Y%m%d.log' //you can add. - _ before datestamp.
+            path: './logs/server_buniyan.log.%Y-%m-%d.log',
+            period: 'daily',          // daily rotation 
+            //period: 'daily',          // daily rotation 
+            template: 'server_buniyan.log.%Y-%m-%d.log', //you can add. - _ before datestamp.
+            level:'info'
         })
     }]
 });
+
 
 applogger._emit = (rec, noemit) => {
     delete rec.pid;
