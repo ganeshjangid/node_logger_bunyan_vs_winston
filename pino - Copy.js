@@ -1,18 +1,17 @@
 var fs = require('fs');
-var path = require ('path');
 var pino=require('pino')
 var pinoms = require('pino-multi-stream')
 var streams = [
-  {level: 'info', stream: fs.createWriteStream( path.join(__dirname+"/../", "asma_log", "server_ganesh_pino.log"))}
+  {level: 'info', stream: fs.createWriteStream('./logs/server.log.%Y-%m-%d.log')}
 ];
 var base=null;
 
 var log = pinoms({streams: streams,base:base,
   useLevelLabels: true,
-  timestamp: function() { return `,"timestamp":"${getCurrentDateTime()}"`}
+  timestamp: () => `,"timestamp":"${getCurrentDateTime()}"`
 });
 
-//log[pino.symbols.endSym] = `}\n`
+log[pino.symbols.endSym] = `}\n`
 
 
 // Object.defineProperty(pino, '_lscache', {
